@@ -106,7 +106,7 @@ public class ModDetailsFragment extends Fragment {
             startDownloading();
         });
 
-        ImageView buttonInstall = view.findViewById(R.id.install_button);
+        View buttonInstall = view.findViewById(R.id.install_button);
         buttonInstall.setOnClickListener(v -> { openDownloadedFile(); });
 
         ImageView shared = view.findViewById(R.id.close);
@@ -286,47 +286,47 @@ public class ModDetailsFragment extends Fragment {
                 handler.removeCallbacks(handlerRunnable);
                 handlerRunnable = null;
             }
-            setDownloadProgress(progress);
+            //setDownloadProgress(progress);
         }
         cursor.close();
     }
 
     private void updateState(DownloadHelper.DownloadingState state) {
-        View loadingContainer = view.findViewById(R.id.downloadingContainer);
+        //View loadingContainer = view.findViewById(R.id.downloadingContainer);
         View buttonDownload = view.findViewById(R.id.download_button);
         View buttonInstall = view.findViewById(R.id.install_button);
 
         switch (state) {
             case NotDownloaded: {
                 buttonDownload.setVisibility(View.VISIBLE);
-                loadingContainer.setVisibility(View.GONE);
+                //loadingContainer.setVisibility(View.GONE);
                 buttonInstall.setVisibility(View.GONE);
                 break;
             }
             case Downloading: {
                 buttonDownload.setVisibility(View.GONE);
-                loadingContainer.setVisibility(View.VISIBLE);
+                //loadingContainer.setVisibility(View.VISIBLE);
                 break;
             }
             case Downloaded: {
                 buttonInstall.setVisibility(View.VISIBLE);
                 buttonDownload.setVisibility(View.GONE);
-                loadingContainer.setVisibility(View.GONE);
+                //loadingContainer.setVisibility(View.GONE);
             }
         }
     }
 
     private void finishDownloading() {
         updateState(DownloadHelper.DownloadingState.Downloaded);
-        setDownloadProgress(100);
+        //setDownloadProgress(100);
 
         showDialogSuccessfully();
     }
 
-    private void setDownloadProgress(int percents) {
-        ProgressBar progressBar = view.findViewById(R.id.progressBar);
-        progressBar.setProgress(percents);
-    }
+//    private void setDownloadProgress(int percents) {
+//        ProgressBar progressBar = view.findViewById(R.id.progressBar);
+//        progressBar.setProgress(percents);
+//    }
 
     private void showDialogSuccessfully() {
         if (LocalStorage.isShowRateDialogAgain(requireContext())) {

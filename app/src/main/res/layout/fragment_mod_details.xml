@@ -97,6 +97,19 @@
                     android:layout_alignParentRight="true"
                     android:scaleType="centerInside"
                     android:src="@drawable/favourite_button_false"/>
+
+                    <ImageView
+                        android:id="@+id/favorite_button_on"
+                        android:layout_width="80dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="@dimen/margin"
+                        android:layout_marginRight="@dimen/margin"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:scaleType="centerInside"
+                        android:visibility="gone"
+                        android:src="@drawable/is_favourite_button"/>
+
                 </RelativeLayout>
 
             </RelativeLayout>
@@ -116,52 +129,28 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="5"
-                    android:scaleType="centerCrop"
+                    android:scaleType="centerInside"
                     android:src="@drawable/download_button"/>
-                <ImageView
+                <RelativeLayout
                     android:id="@+id/install_button"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="5"
                     android:visibility="gone"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/install_button"/>
-                <RelativeLayout
-                    android:id="@+id/downloadingContainer"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="5"
-                    android:visibility="gone"
-                    android:background="@color/progress_bar_background">
-                    <ProgressBar
-                        android:id="@+id/progressBar"
-                        android:layout_width="match_parent"
-                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                        android:layout_height="5dp"
-                        android:max="100"
-                        tools:progress="25"
-                        android:layout_marginTop="9dp"
-                        android:layout_marginRight="@dimen/margin"
-                        android:layout_marginLeft="@dimen/margin"
-                        android:splitTrack="false"
-                        android:minHeight="0dp"
-                        android:maxHeight="100dp"
-                        android:progressDrawable="@drawable/progressbar_downloading"
-                        android:thumb="@null"/>
+                    android:background="@drawable/download_box">
+
                     <TextView
-                        android:id="@+id/downloadingLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
                         android:textColor="@color/white"
-                        android:textSize="10sp"
-                        android:layout_marginTop="3dp"
-                        android:textAppearance="@style/TextAppearance.FontPath"
-                        android:layout_marginLeft="@dimen/margin"
-                        android:layout_marginBottom="@dimen/margin"
-                        android:layout_below="@id/progressBar"
-                        android:textAllCaps="true"
-                        android:text="@string/loading"/>
+                        android:text="@string/install"
+                        android:textSize="24dp"
+                        fontPath="fonts/PIXELADE.TTF"
+                        tools:ignore="MissingPrefix"/>
+
                 </RelativeLayout>
+
             </LinearLayout>
 
             <RelativeLayout
