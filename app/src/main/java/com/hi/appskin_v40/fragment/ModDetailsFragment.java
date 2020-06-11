@@ -83,7 +83,7 @@ public class ModDetailsFragment extends Fragment {
         TextView description = view.findViewById(R.id.descriptionView);
         ImageView image = view.findViewById(R.id.skinImage);
         //CircleIndicator indicator = view.findViewById(R.id.circleIndicator);
-        View isUpdated = view.findViewById(R.id.isUpdate);
+        //View isUpdated = view.findViewById(R.id.isUpdate);
 
         //viewPager.setAdapter(new ImagePagerAdapter(getContext(), null));
         //indicator.setViewPager(viewPager);
@@ -95,9 +95,9 @@ public class ModDetailsFragment extends Fragment {
 
         skinTitle.setText(skin.getTitle());
         description.setText(Html.fromHtml(skin.getDescription()));
-        isUpdated.setVisibility(skin.isUpdatedToday() ? View.VISIBLE : View.VISIBLE);
+        //isUpdated.setVisibility(skin.isUpdatedToday() ? View.VISIBLE : View.VISIBLE);
 
-        setRating(view.findViewById(R.id.ratingContainer), skin.getRating());
+        //setRating(view.findViewById(R.id.ratingContainer), skin.getRating());
         setDescriptionImages(view.findViewById(R.id.descImagesContainer), skin.getScreenShots());
 
         ImageView download = view.findViewById(R.id.download_button);
@@ -109,14 +109,14 @@ public class ModDetailsFragment extends Fragment {
         ImageView buttonInstall = view.findViewById(R.id.install_button);
         buttonInstall.setOnClickListener(v -> { openDownloadedFile(); });
 
-        ImageView shared = view.findViewById(R.id.link_to_store);
+        ImageView shared = view.findViewById(R.id.close);
         shared.setOnClickListener(v -> { goToStore(getContext()); });
 
         View back = view.findViewById(R.id.back);
         back.setOnClickListener(v -> activity.onBackPressed());
 
-        ImageView favorite =view.findViewById(R.id.favorite_button);
-        favorite.setOnClickListener(onFavoriteClicked);
+        //ImageView favorite =view.findViewById(R.id.favorite_button);
+        //favorite.setOnClickListener(onFavoriteClicked);
         updateFavoriteState();
 
         showInterstitialAds();
@@ -192,10 +192,10 @@ public class ModDetailsFragment extends Fragment {
     }
 
     private void updateFavoriteState() {
-        ImageView image = view.findViewById(R.id.favorite_button);
-        image.setImageResource(FavoritesManager.getInstance().isFavorite(getContext(), skin)
-                ? R.drawable.is_favourite_button
-                : R.drawable.favourite_button_false);
+//        ImageView image = view.findViewById(R.id.favorite_button);
+//        image.setImageResource(FavoritesManager.getInstance().isFavorite(getContext(), skin)
+//                ? R.drawable.is_favourite_button
+//                : R.drawable.favourite_button_false);
     }
 
     private void openDownloadedFile() {

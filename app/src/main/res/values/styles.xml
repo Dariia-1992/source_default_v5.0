@@ -14,7 +14,7 @@
 
     <style name="TextAppearance.FontPath" parent="android:TextAppearance">
         <!-- Custom Attr-->
-        <item name="fontPath">fonts/CentieSans.ttf</item>
+        <item name="fontPath">fonts/PIXELADE.TTF</item>
     </style>
 
 </resources>

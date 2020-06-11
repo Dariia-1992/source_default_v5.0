@@ -22,6 +22,7 @@
     <color name="color_progress">#19fd9f</color>
     <color name="color_install_button">#1d83b5</color>
     <color name="grey">#e2e2e2</color>
+    <color name="background_dialog">#f4f4f4</color>
 
     <array name="shadow_gradient">
         <item>#00000000</item>

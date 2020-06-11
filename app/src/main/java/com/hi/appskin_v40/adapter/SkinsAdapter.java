@@ -43,8 +43,8 @@ public class SkinsAdapter extends RecyclerView.Adapter<SkinsAdapter.ViewHolder> 
                 .load(DownloadHelper.getThumbnailUrl(skin.getThumbnail()))
                 .into(holder.postImageView);
         holder.titleView.setText(skin.getTitle());
-        holder.isUpdate.setVisibility(skin.isUpdatedToday() ? View.VISIBLE : View.VISIBLE);
-        setRating(holder, skin);
+//        holder.isUpdate.setVisibility(skin.isUpdatedToday() ? View.VISIBLE : View.VISIBLE);
+//        setRating(holder, skin);
 
         holder.itemView.setOnClickListener(v -> {
             if (listener != null){
@@ -77,8 +77,8 @@ public class SkinsAdapter extends RecyclerView.Adapter<SkinsAdapter.ViewHolder> 
 
             postImageView = itemView.findViewById(R.id.postImageView);
             titleView = itemView.findViewById(R.id.titleView);
-            ratingContainer = itemView.findViewById(R.id.ratingContainer);
-            isUpdate = itemView.findViewById(R.id.isUpdate);
+            //ratingContainer = itemView.findViewById(R.id.ratingContainer);
+            //isUpdate = itemView.findViewById(R.id.isUpdate);
         }
     }
 }

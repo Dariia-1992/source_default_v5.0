@@ -5,13 +5,15 @@
     <!-- TODO: Remove or change this placeholder text -->
 
     <string name="latest_mod">Latest mod</string>
+    <string name="details">MOD DETAILS</string>
+
 
     <string name="explore">EXPLORE</string>
     <string name="favorite">FAVORITE</string>
     <string name="minecraft">MINECRAFT</string>
     <string name="mods">MODS</string>
-    <string name="download_complete">FILE DOWNLOAD COMPLETE</string>
-    <string name="download_complete_description">If you love using with our app, would you mind taking a few second to rate it?</string>
+    <string name="download_complete">Download Complete!</string>
+    <string name="download_complete_description">If you enjoy using app, would you mind taking a moment to rate it?</string>
     <string name="update_text">UPDATED TODAY</string>
     <string name="back_header">BACK</string>
     <string name="loading">Downloading...</string>

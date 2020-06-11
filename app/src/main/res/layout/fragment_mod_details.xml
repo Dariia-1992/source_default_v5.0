@@ -4,46 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".fragment.ModDetailsFragment">
 
     <RelativeLayout
         android:id="@+id/toolbar_header"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/toolbar_height"
-        android:background="@color/background_color">
+        android:layout_height="40dp"
+        android:background="@color/grey">
 
         <RelativeLayout
             android:id="@+id/back"
             android:layout_width="wrap_content"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/back_arrow"
-                android:layout_width="@dimen/toolbar_menu_width"
-                android:layout_height="@dimen/toolbar_menu_height"
-                android:src="@drawable/back"
-                android:layout_marginStart="@dimen/margin"
-                android:layout_centerVertical="true"/>
             <TextView
                 android:id="@+id/back_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/back_header"
-                android:layout_toRightOf="@id/back_arrow"
+                android:text="@string/details"
                 android:layout_marginLeft="@dimen/margin"
                 android:layout_centerVertical="true"
-                android:textColor="@color/white"
-                android:textSize="18dp"
-                fontPath="fonts/CentieSans.ttf"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="24dp"
+                fontPath="fonts/PIXELADE.TTF"
                 tools:ignore="MissingPrefix"/>
         </RelativeLayout>
 
         <ImageView
-            android:id="@+id/link_to_store"
-            android:layout_width="@dimen/toolbar_menu_width"
-            android:layout_height="@dimen/toolbar_menu_height"
+            android:id="@+id/close"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_alignParentRight="true"
-            android:src="@drawable/rate"
+            android:src="@drawable/close"
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/margin"/>
 
@@ -52,7 +45,7 @@
     <View
         android:id="@+id/toolbar_separator"
         android:layout_width="match_parent"
-        android:layout_height="4dp"
+        android:layout_height="2dp"
         android:layout_below="@id/toolbar_header"
         android:background="@color/colorPrimaryDark"/>
 
@@ -66,117 +59,53 @@
             android:layout_height="wrap_content">
 
             <RelativeLayout
-                android:id="@+id/postImageContent"
+                android:id="@+id/all_content"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/corner_rectangle">
+                android:layout_height="wrap_content">
 
-<!--                <androidx.viewpager.widget.ViewPager-->
-<!--                    android:id="@+id/viewPager"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="@dimen/background_image_height"/>-->
                 <ImageView
                     android:id="@+id/skinImage"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/background_image_height"
                     android:scaleType="centerCrop"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/skinImage"
+                    android:background="@color/grey"
+                    android:layout_centerVertical="true">
 
-<!--                <me.relex.circleindicator.CircleIndicator-->
-<!--                    android:id="@+id/circleIndicator"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_alignBottom="@+id/skinImage"-->
-<!--                    android:layout_centerHorizontal="true"-->
-<!--                    android:layout_marginBottom="12dp" />-->
                 <TextView
                     android:id="@+id/titleView"
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:layout_below="@id/skinImage"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin"
+                    android:layout_marginRight="@dimen/margin"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp"
                     android:layout_centerVertical="true"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginStart="12dp"
-                    fontPath="fonts/CentieSans.ttf"
-                    tools:ignore="MissingPrefix"
-                    tools:text="Test data" />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="14dp"
-                    android:layout_marginStart="12dp"
+                    fontPath="fonts/PIXELADE.TTF"
+                    tools:ignore="MissingPrefix" />
+
+                <ImageView
+                    android:id="@+id/favorite_button"
+                    android:layout_width="80dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="@dimen/margin"
+                    android:layout_marginRight="@dimen/margin"
                     android:layout_centerVertical="true"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="6dp"
-                    android:layout_below="@id/titleView"
-                    android:orientation="horizontal">
+                    android:layout_alignParentRight="true"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/favourite_button_false"/>
+                </RelativeLayout>
 
-                    <LinearLayout
-                        android:id="@+id/ratingContainer"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center_vertical"
-                        android:orientation="horizontal"/>
-
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="12dp"
-                        android:layout_marginLeft="6dp"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical">
-
-                        <TextView
-                            android:id="@+id/tvMinecraftArea"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_marginEnd="2dp"
-                            android:background="@drawable/background_minecraft_button"
-                            android:padding="2dp"
-                            android:textSize="6dp"
-                            android:textColor="@color/white"
-                            android:textStyle="bold"
-                            android:layout_gravity="center_vertical"
-                            android:text="@string/minecraft" />
-
-                        <TextView
-                            android:id="@+id/tvModsArea"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/background_mods_button"
-                            android:layout_marginStart="2dp"
-                            android:textColor="@color/white"
-                            android:textSize="6dp"
-                            android:padding="2dp"
-                            android:textStyle="bold"
-                            android:layout_toRightOf="@id/tvMinecraftArea"
-                            android:layout_gravity="center_vertical"
-                            android:text="@string/mods" />
-                    </RelativeLayout>
-
-                    <TextView
-                        android:id="@+id/isUpdate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:textSize="8dp"
-                        fontPath="fonts/CentieSans.ttf"
-                        tools:ignore="MissingPrefix"
-                        android:layout_marginRight="@dimen/margin"
-                        android:text="@string/update_text"/>
-                </LinearLayout>
             </RelativeLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_below="@id/postImageContent"
-                android:background="@color/colorPrimaryDark"/>
+
             <LinearLayout
                 android:id="@+id/download_container"
                 android:layout_width="match_parent"
                 android:layout_height="44dp"
-                android:layout_below="@id/postImageContent"
+                android:layout_below="@id/all_content"
                 android:orientation="horizontal"
                 android:layout_marginLeft="@dimen/margin"
                 android:layout_marginRight="@dimen/margin"
@@ -233,17 +162,8 @@
                         android:textAllCaps="true"
                         android:text="@string/loading"/>
                 </RelativeLayout>
-
-                <ImageView
-                    android:id="@+id/favorite_button"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:layout_gravity="right"
-                    android:layout_marginLeft="10dp"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/favourite_button_false"/>
             </LinearLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -254,12 +174,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="11dp"
-                    android:textSize="13sp"
+                    android:textSize="10sp"
                     android:layout_marginLeft="@dimen/margin"
                     android:layout_marginRight="@dimen/margin"
-                    fontPath="fonts/Roboto-Regular.ttf"
+                    fontPath="fonts/CentieSans.ttf"
                     tools:ignore="MissingPrefix"
-                    android:textColor="@color/colorPrimaryDark"/>
+                    android:textColor="@color/white"/>
 
                 <LinearLayout
                     android:id="@+id/descImagesContainer"
