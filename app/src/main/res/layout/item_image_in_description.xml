@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivDescImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:scaleType="centerCrop"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="3dp"
+        android:adjustViewBounds="true"
+        tools:src="@drawable/item_1_1" />
+</RelativeLayout>

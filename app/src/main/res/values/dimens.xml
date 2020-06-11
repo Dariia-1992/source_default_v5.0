@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="toolbar_height">44dp</dimen>
+    <dimen name="margin">16dp</dimen>
+    <dimen name="toolbar_menu_width">20dp</dimen>
+    <dimen name="toolbar_menu_height">20dp</dimen>
+    <dimen name="post_image_height">100dp</dimen>
+    <dimen name="background_image_height">180dp</dimen>
+    <dimen name="details_content_padding">24dp</dimen>
+    <dimen name="details_content_padding_right">28dp</dimen>
+</resources>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "626874590079",
+    "firebase_url": "https://modify-fiv.firebaseio.com",
+    "project_id": "modify-fiv",
+    "storage_bucket": "modify-fiv.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:626874590079:android:4e91893aa94c766623f04a",
+        "android_client_info": {
+          "package_name": "com.hi.appskin_v40"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "626874590079-2m1u0okio7icduscn07pfva7hi0eivik.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAU_kB2GtDJqJbsXyY8DKuRdRE7YggZWbY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "626874590079-2m1u0okio7icduscn07pfva7hi0eivik.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

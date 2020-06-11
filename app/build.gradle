@@ -1,0 +1,84 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.firebase.crashlytics'
+apply plugin: 'com.google.gms.google-services'
+
+android {
+    compileSdkVersion 28
+
+
+    defaultConfig {
+        applicationId "com.hi.appskin_v40"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField 'String',  "showedCategory", "\"Furniture Mods\""
+        buildConfigField 'String',  "showedFirebaseURL", "\"modify-fiv.appspot.com\""
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            resValue "string", "id_ads_banner", property('adsBanner')
+            resValue "string", "id_ads_interstitial", property('adsInter')
+            resValue "string", "id_ads_native", property('adsNative')
+            resValue "string", "id_ads_video", property('adsRewardedVideo')
+            resValue "string", "id_ads_mobile", property('adsMobile')
+
+        }
+        debug {
+            versionNameSuffix '-debug'
+            signingConfig signingConfigs.debug
+            resValue "string", "id_ads_banner", property('adsBanner')
+            resValue "string", "id_ads_interstitial", property('adsInter')
+            resValue "string", "id_ads_native", property('adsNative')
+            resValue "string", "id_ads_video", property('adsRewardedVideo')
+            resValue "string", "id_ads_mobile", property('adsMobile')
+
+        }
+    }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation 'androidx.fragment:fragment:1.2.4'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'com.google.android.gms:play-services-ads:19.1.0'
+
+    implementation "android.arch.navigation:navigation-fragment:1.0.0"
+    implementation "android.arch.navigation:navigation-ui:1.0.0"
+
+    implementation "androidx.coordinatorlayout:coordinatorlayout:1.1.0"
+    // Circular image view
+    implementation 'com.mikhaellopez:circularimageview:3.2.0'
+    // Indicator for ViewPager
+    implementation 'me.relex:circleindicator:2.1.0'
+    // Easy permissions
+    implementation 'pub.devrel:easypermissions:3.0.0'
+    // Calligraphy (custom fonts)
+    implementation 'io.github.inflationx:calligraphy3:3.1.1'
+    implementation 'io.github.inflationx:viewpump:2.0.3'
+
+    implementation 'com.google.firebase:firebase-firestore:21.4.3'
+    implementation 'com.google.firebase:firebase-analytics:17.4.0'
+
+    implementation 'com.squareup.picasso:picasso:2.71828'
+}

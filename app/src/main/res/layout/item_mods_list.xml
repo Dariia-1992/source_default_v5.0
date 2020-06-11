@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:id="@+id/postImageContent"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_marginLeft="@dimen/margin"
+        android:layout_marginRight="@dimen/margin"
+        android:layout_marginTop="12dp"
+        android:paddingTop="2dp"
+        android:background="@drawable/corner_rectangle">
+        <ImageView
+            android:id="@+id/postImageView"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:padding="2dp"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/item_mock" />
+        <TextView
+            android:id="@+id/titleView"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:layout_below="@id/postImageView"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="6dp"
+            fontPath="fonts/CentieSans.ttf"
+            tools:ignore="MissingPrefix"
+            android:layout_marginStart="12dp"
+            tools:text="Test data" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_centerVertical="true"
+            android:layout_below="@id/titleView"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/ratingContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal"/>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="12dp"
+                android:layout_marginLeft="6dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tvMinecraftArea"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="2dp"
+                    android:background="@drawable/background_minecraft_button"
+                    android:padding="2dp"
+                    android:textSize="6dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/minecraft" />
+
+                <TextView
+                    android:id="@+id/tvModsArea"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/background_mods_button"
+                    android:layout_marginStart="2dp"
+                    android:textColor="@color/white"
+                    android:textSize="6dp"
+                    android:padding="2dp"
+                    android:textStyle="bold"
+                    android:layout_toRightOf="@id/tvMinecraftArea"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/mods" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/isUpdate"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:textSize="8dp"
+                fontPath="fonts/CentieSans.ttf"
+                tools:ignore="MissingPrefix"
+                android:layout_marginRight="@dimen/margin"
+                android:text="@string/update_text"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimaryDark"/>
+    </RelativeLayout>
+</RelativeLayout>

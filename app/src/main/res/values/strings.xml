@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">MUMIMA MODS</string>
+    <string name="text_here">AAAA MODS</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="latest_mod">Latest mod</string>
+
+    <string name="explore">EXPLORE</string>
+    <string name="favorite">FAVORITE</string>
+    <string name="minecraft">MINECRAFT</string>
+    <string name="mods">MODS</string>
+    <string name="download_complete">FILE DOWNLOAD COMPLETE</string>
+    <string name="download_complete_description">If you love using with our app, would you mind taking a few second to rate it?</string>
+    <string name="update_text">UPDATED TODAY</string>
+    <string name="back_header">BACK</string>
+    <string name="loading">Downloading...</string>
+    <string name="later">LATER</string>
+    <string name="never">NEVER</string>
+    <string name="rationale_write_permission">We need this permission for download file</string>
+    <string name="minecraft_not_found_title">MINECRAFT NOT FOUND!</string>
+    <string name="minecraft_not_found_description">You need official minecraft to install mods or addons. Please download and install from Google Play.</string>
+    <string name="ok_button">OKAY</string>
+    <string name="cancel">CANCEL</string>
+</resources>

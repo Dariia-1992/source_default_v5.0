@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#000</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <color name="white">#ffff</color>
+    <color name="background_color">#5d2c85</color>
+    <color name="lite_purple">#593f6e</color>
+    <color name="background_color_item">#f3f3f3</color>
+    <color name="green">#47ee36</color>
+    <color name="orange">#ff6c00</color>
+    <color name="toolbar_text_color">#36eed5</color>
+    <color name="toolbar_text_color_favorite">#b573eb</color>
+    <color name="progress_bar_background">#b7b7b7</color>
+    <color name="btn_ok">#197b30</color>
+    <color name="button_ok">#0076a3</color>
+    <color name="func_button">#6d6d6d</color>
+
+    <color name="color_text_title">#e4ff00</color>
+    <color name="color_separator">#84929b</color>
+    <color name="color_progress">#19fd9f</color>
+    <color name="color_install_button">#1d83b5</color>
+    <color name="grey">#e2e2e2</color>
+
+    <array name="shadow_gradient">
+        <item>#00000000</item>
+        <item>#99000000</item>
+    </array>
+
+</resources>

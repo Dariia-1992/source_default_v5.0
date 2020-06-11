@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="8dp"
+        android:textSize="20sp"
+        android:textAppearance="@style/TextAppearance.FontPath"
+        android:textColor="@color/colorPrimaryDark"
+        android:text="@string/download_complete" />
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="16dp"
+        android:layout_below="@id/title"
+        android:textColor="@color/colorPrimaryDark"
+        android:text="@string/download_complete_description" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_below="@id/description">
+
+        <TextView
+            android:id="@+id/later"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/later"
+            android:layout_marginLeft="16dp"
+            android:textAppearance="@style/TextAppearance.FontPath"
+            android:layout_centerVertical="true"
+            android:textColor="@color/func_button"
+            android:layout_alignParentLeft="true"/>
+
+        <TextView
+            android:id="@+id/never"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/never"
+            android:layout_toLeftOf="@+id/button_Ok"
+            android:layout_marginRight="16dp"
+            android:textColor="@color/func_button"
+            android:textAppearance="@style/TextAppearance.FontPath"
+            android:layout_centerVertical="true"/>
+
+        <Button
+            android:id="@+id/button_Ok"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:background="@color/button_ok"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:text="@string/ok_button"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+</RelativeLayout>
