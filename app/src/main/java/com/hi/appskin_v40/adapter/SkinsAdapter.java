@@ -43,8 +43,6 @@ public class SkinsAdapter extends RecyclerView.Adapter<SkinsAdapter.ViewHolder> 
                 .load(DownloadHelper.getThumbnailUrl(skin.getThumbnail()))
                 .into(holder.postImageView);
         holder.titleView.setText(skin.getTitle());
-//        holder.isUpdate.setVisibility(skin.isUpdatedToday() ? View.VISIBLE : View.VISIBLE);
-//        setRating(holder, skin);
 
         holder.itemView.setOnClickListener(v -> {
             if (listener != null){
@@ -56,29 +54,15 @@ public class SkinsAdapter extends RecyclerView.Adapter<SkinsAdapter.ViewHolder> 
     @Override
     public int getItemCount() { return items != null ? items.size() : 0; }
 
-    private void setRating(@NonNull ViewHolder holder, Skin skin) {
-        int rating = skin.getRating();
-
-        holder.ratingContainer.removeAllViews();
-        for (int i = 0; i < rating; i++) {
-            View view = LayoutInflater.from(holder.itemView.getContext()).inflate(R.layout.item_rating_star, holder.ratingContainer, false);
-            holder.ratingContainer.addView(view);
-        }
-    }
-
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView titleView;
         ImageView postImageView;
-        ViewGroup ratingContainer;
-        View isUpdate;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             postImageView = itemView.findViewById(R.id.postImageView);
             titleView = itemView.findViewById(R.id.titleView);
-            //ratingContainer = itemView.findViewById(R.id.ratingContainer);
-            //isUpdate = itemView.findViewById(R.id.isUpdate);
         }
     }
 }

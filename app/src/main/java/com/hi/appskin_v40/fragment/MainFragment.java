@@ -1,9 +1,11 @@
 package com.hi.appskin_v40.fragment;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.SearchView;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,7 +15,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.hi.appskin_v40.R;
@@ -42,11 +44,10 @@ public class MainFragment extends Fragment{
     private SkinsAdapter adapter;
     private String searchStr;
 
-    private TextView allSkins;
-    private TextView favoriteList;
-
-    private View textLine;
-    private View favoriteLine;
+    private View allSkinsTrue;
+    private View favoriteListTrue;
+    private View allSkinsFalse;
+    private View favoriteListFalse;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -64,10 +65,9 @@ public class MainFragment extends Fragment{
 
         View searchButton = view.findViewById(R.id.toolbar_search);
         searchButton.setOnClickListener(v -> setupSearch(true));
-        //textLine = view.findViewById(R.id.under_text_line);
-        //favoriteLine = view.findViewById(R.id.under_favorite_line);
-//        favoriteLine.setVisibility(View.GONE);
-  //      textLine.setVisibility(View.VISIBLE);
+
+        ImageView shared = view.findViewById(R.id.rate);
+        shared.setOnClickListener(v -> { goToStore(getContext()); });
 
         setupSearch(false);
         initMode();
@@ -84,17 +84,17 @@ public class MainFragment extends Fragment{
     public void onResume() {
         super.onResume();
 
-//        if (MODE_FAVORITE) {
-//            allSkins.setTextColor(ContextCompat.getColor(getContext(), R.color.toolbar_text_color_favorite));
-//            favoriteList.setTextColor(ContextCompat.getColor(getContext(), R.color.toolbar_text_color));
-//            setCheckedState(favoriteList, true, favoriteLine);
-//            setCheckedState(allSkins, false, textLine);
-//        } else {
-//            favoriteList.setTextColor(ContextCompat.getColor(getContext(), R.color.toolbar_text_color_favorite));
-//            allSkins.setTextColor(ContextCompat.getColor(getContext(), R.color.toolbar_text_color));
-//            setCheckedState(allSkins, true, textLine);
-//            setCheckedState(favoriteList, false, favoriteLine);
-//        }
+        if (MODE_FAVORITE) {
+            setCheckedState(favoriteListTrue, true);
+            setCheckedState(allSkinsTrue, false);
+            setCheckedState(favoriteListFalse, false);
+            setCheckedState(allSkinsFalse, true);
+        } else {
+            setCheckedState(allSkinsTrue, true);
+            setCheckedState(allSkinsFalse, false);
+            setCheckedState(favoriteListFalse, true);
+            setCheckedState(favoriteListTrue, false);
+        }
     }
 
     private void refreshItems() {
@@ -118,23 +118,44 @@ public class MainFragment extends Fragment{
     }
 
     private void initMode() {
-       // allSkins = view.findViewById(R.id.button_text);
-      //  favoriteList = view.findViewById(R.id.button_favorite);
+        allSkinsTrue = view.findViewById(R.id.list_mods);
+        allSkinsFalse = view.findViewById(R.id.list_mods_false);
+        favoriteListTrue = view.findViewById(R.id.favorite_true);
+        favoriteListFalse = view.findViewById(R.id.favorite_false);
 
-//        allSkins.setOnClickListener(v -> {
-//            setCheckedState(allSkins, true, textLine);
-//            setCheckedState(favoriteList, false, favoriteLine);
-//            setCurrent(fulSkins);
-//            MODE_FAVORITE = false;
-//        });
-//
-//        getFavorite();
-//        favoriteList.setOnClickListener(v -> {
-//            setCheckedState(favoriteList, true, favoriteLine);
-//            setCheckedState(allSkins, false, textLine);
-//            setCurrent(favoriteSkins);
-//            MODE_FAVORITE = true;
-//        });
+        allSkinsFalse.setOnClickListener(v -> {
+            setCheckedState(allSkinsTrue, true);
+            setCheckedState(allSkinsFalse, false);
+            setCheckedState(favoriteListTrue, false);
+            setCheckedState(favoriteListFalse, true);
+
+            setCurrent(fulSkins);
+            MODE_FAVORITE = false;
+        });
+
+        getFavorite();
+        favoriteListFalse.setOnClickListener(v -> {
+
+            setCheckedState(allSkinsTrue, false);
+            setCheckedState(allSkinsFalse, true);
+            setCheckedState(favoriteListFalse, false);
+            setCheckedState(favoriteListTrue, true);
+
+            setCurrent(favoriteSkins);
+            MODE_FAVORITE = true;
+        });
+    }
+
+    public static void goToStore(Context context) {
+        if (context == null)
+            return;
+
+        final String appPackageName = context.getPackageName();
+        try {
+            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+        } catch (android.content.ActivityNotFoundException anfe) {
+            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+        }
     }
 
     private void setupSearch(boolean show){
@@ -204,11 +225,10 @@ public class MainFragment extends Fragment{
         return false;
     }
 
-    private void setCheckedState(TextView textView, boolean isChecked, View line) {
+    private void setCheckedState(View view, boolean isChecked) {
         if (getContext() == null)
             return;
-        textView.setTextColor(ContextCompat.getColor(getContext(), isChecked ? R.color.toolbar_text_color : R.color.toolbar_text_color_favorite));
-        line.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+        view.setVisibility(isChecked ? View.VISIBLE : View.GONE);
     }
 
     private void setCurrent(List<Skin> skins) {

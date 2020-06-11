@@ -78,16 +78,9 @@ public class ModDetailsFragment extends Fragment {
 
         MainActivity activity = (MainActivity) requireActivity();
 
-        //ViewPager viewPager = view.findViewById(R.id.viewPager);
         TextView skinTitle = view.findViewById(R.id.titleView);
         TextView description = view.findViewById(R.id.descriptionView);
         ImageView image = view.findViewById(R.id.skinImage);
-        //CircleIndicator indicator = view.findViewById(R.id.circleIndicator);
-        //View isUpdated = view.findViewById(R.id.isUpdate);
-
-        //viewPager.setAdapter(new ImagePagerAdapter(getContext(), null));
-        //indicator.setViewPager(viewPager);
-        //indicator.setVisibility(View.GONE);
 
         Picasso.get()
                 .load(DownloadHelper.getThumbnailUrl(skin.getThumbnail()))
@@ -95,9 +88,7 @@ public class ModDetailsFragment extends Fragment {
 
         skinTitle.setText(skin.getTitle());
         description.setText(Html.fromHtml(skin.getDescription()));
-        //isUpdated.setVisibility(skin.isUpdatedToday() ? View.VISIBLE : View.VISIBLE);
 
-        //setRating(view.findViewById(R.id.ratingContainer), skin.getRating());
         setDescriptionImages(view.findViewById(R.id.descImagesContainer), skin.getScreenShots());
 
         ImageView download = view.findViewById(R.id.download_button);
@@ -109,14 +100,11 @@ public class ModDetailsFragment extends Fragment {
         View buttonInstall = view.findViewById(R.id.install_button);
         buttonInstall.setOnClickListener(v -> { openDownloadedFile(); });
 
-        ImageView shared = view.findViewById(R.id.close);
-        shared.setOnClickListener(v -> { goToStore(getContext()); });
-
-        View back = view.findViewById(R.id.back);
+        View back = view.findViewById(R.id.close);
         back.setOnClickListener(v -> activity.onBackPressed());
 
-        //ImageView favorite =view.findViewById(R.id.favorite_button);
-        //favorite.setOnClickListener(onFavoriteClicked);
+        ImageView favorite =view.findViewById(R.id.favorite_button);
+        favorite.setOnClickListener(onFavoriteClicked);
         updateFavoriteState();
 
         showInterstitialAds();
@@ -135,18 +123,18 @@ public class ModDetailsFragment extends Fragment {
             DownloadHelper.DownloadingState state = DownloadHelper.getDownloadingStatus(requireContext(), skin);
             updateState(state);
 
-            // If downloading -- show progressBar
-            if (state == DownloadHelper.DownloadingState.Downloading) {
-                long id = LocalStorage.getIdForModInfo(requireContext(), skin);
-                if (id != 0) {
-                    handlerRunnable = () -> {
-                        updateDownloadProgress(id);
-                        if (handlerRunnable != null)
-                            handler.postDelayed(handlerRunnable, UPDATE_PERIOD);
-                    };
-                    handler.post(handlerRunnable);
-                }
-            }
+//            // If downloading -- show progressBar
+//            if (state == DownloadHelper.DownloadingState.Downloading) {
+//                long id = LocalStorage.getIdForModInfo(requireContext(), skin);
+//                if (id != 0) {
+//                    handlerRunnable = () -> {
+//                        updateDownloadProgress(id);
+//                        if (handlerRunnable != null)
+//                            handler.postDelayed(handlerRunnable, UPDATE_PERIOD);
+//                    };
+//                    handler.post(handlerRunnable);
+//                }
+//            }
         }
 
         Context context = requireContext();
@@ -179,23 +167,11 @@ public class ModDetailsFragment extends Fragment {
             LocalStorage.setOpensWithoutAd(requireContext(), showsWithoutAdCount + 1);
     }
 
-    public static void goToStore(Context context) {
-        if (context == null)
-            return;
-
-        final String appPackageName = context.getPackageName();
-        try {
-            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
-        } catch (android.content.ActivityNotFoundException anfe) {
-            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
-        }
-    }
-
     private void updateFavoriteState() {
-//        ImageView image = view.findViewById(R.id.favorite_button);
-//        image.setImageResource(FavoritesManager.getInstance().isFavorite(getContext(), skin)
-//                ? R.drawable.is_favourite_button
-//                : R.drawable.favourite_button_false);
+        ImageView image = view.findViewById(R.id.favorite_button);
+        image.setImageResource(FavoritesManager.getInstance().isFavorite(getContext(), skin)
+                ? R.drawable.is_favourite_button
+                : R.drawable.favourite_button_false);
     }
 
     private void openDownloadedFile() {
@@ -217,14 +193,6 @@ public class ModDetailsFragment extends Fragment {
             startActivity(j);
         } else {
             showDialogNotFound();
-        }
-    }
-
-    private void setRating(ViewGroup group, int rating) {
-        group.removeAllViews();
-        for (int i = 0; i < rating; i++) {
-            View view = LayoutInflater.from(requireContext()).inflate(R.layout.item_rating_star, group, false);
-            group.addView(view);
         }
     }
 
@@ -292,26 +260,22 @@ public class ModDetailsFragment extends Fragment {
     }
 
     private void updateState(DownloadHelper.DownloadingState state) {
-        //View loadingContainer = view.findViewById(R.id.downloadingContainer);
         View buttonDownload = view.findViewById(R.id.download_button);
         View buttonInstall = view.findViewById(R.id.install_button);
 
         switch (state) {
             case NotDownloaded: {
                 buttonDownload.setVisibility(View.VISIBLE);
-                //loadingContainer.setVisibility(View.GONE);
                 buttonInstall.setVisibility(View.GONE);
                 break;
             }
             case Downloading: {
                 buttonDownload.setVisibility(View.GONE);
-                //loadingContainer.setVisibility(View.VISIBLE);
                 break;
             }
             case Downloaded: {
                 buttonInstall.setVisibility(View.VISIBLE);
                 buttonDownload.setVisibility(View.GONE);
-                //loadingContainer.setVisibility(View.GONE);
             }
         }
     }
@@ -322,11 +286,6 @@ public class ModDetailsFragment extends Fragment {
 
         showDialogSuccessfully();
     }
-
-//    private void setDownloadProgress(int percents) {
-//        ProgressBar progressBar = view.findViewById(R.id.progressBar);
-//        progressBar.setProgress(percents);
-//    }
 
     private void showDialogSuccessfully() {
         if (LocalStorage.isShowRateDialogAgain(requireContext())) {

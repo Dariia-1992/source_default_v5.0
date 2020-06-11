@@ -17,7 +17,6 @@ public class Skin {
     private ArrayList<String> screenShots;
     private String thumbnail;
     private String title;
-    private int rating = 5; // local data
 
     public String getId() { return id; }
     public String getCategory() { return category; }
@@ -27,22 +26,6 @@ public class Skin {
     public ArrayList<String> getScreenShots() { return screenShots; }
     public String getThumbnail() { return thumbnail; }
     public String getTitle() { return title; }
-
-    public boolean isUpdatedToday() {
-        if (date == null)
-            return false;
-        return DateUtils.isToday(date.getTime());
-    }
-
-    public int getRating() {
-        if (rating < 0)
-            return 0;
-
-        if (rating > 5)
-            return 5;
-
-        return rating;
-    }
 
     public String generateKey() {
         return MD5.generate(title + mod);
