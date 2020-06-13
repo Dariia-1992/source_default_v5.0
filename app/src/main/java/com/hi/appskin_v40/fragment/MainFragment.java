@@ -134,6 +134,7 @@ public class MainFragment extends Fragment{
         });
 
         getFavorite();
+
         favoriteListFalse.setOnClickListener(v -> {
 
             setCheckedState(allSkinsTrue, false);
@@ -141,6 +142,7 @@ public class MainFragment extends Fragment{
             setCheckedState(favoriteListFalse, false);
             setCheckedState(favoriteListTrue, true);
 
+            getFavorite();
             setCurrent(favoriteSkins);
             MODE_FAVORITE = true;
         });

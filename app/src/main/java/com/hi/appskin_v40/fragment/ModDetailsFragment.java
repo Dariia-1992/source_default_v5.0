@@ -34,6 +34,7 @@ import com.hi.appskin_v40.R;
 import com.hi.appskin_v40.dialogs.DownloadNeverCompleteDialog;
 import com.hi.appskin_v40.dialogs.FileDownloadCompleteDialog;
 import com.hi.appskin_v40.dialogs.NotFoundDialog;
+import com.hi.appskin_v40.dialogs.ProgressDialog;
 import com.hi.appskin_v40.model.Skin;
 import com.hi.appskin_v40.model.SkinsRepository;
 import com.hi.appskin_v40.utils.Config;
@@ -61,6 +62,7 @@ public class ModDetailsFragment extends Fragment {
     private Skin skin;
     private Handler handler = new Handler();
     private Runnable handlerRunnable;
+    private ProgressDialog dialogProgress;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -123,18 +125,18 @@ public class ModDetailsFragment extends Fragment {
             DownloadHelper.DownloadingState state = DownloadHelper.getDownloadingStatus(requireContext(), skin);
             updateState(state);
 
-//            // If downloading -- show progressBar
-//            if (state == DownloadHelper.DownloadingState.Downloading) {
-//                long id = LocalStorage.getIdForModInfo(requireContext(), skin);
-//                if (id != 0) {
-//                    handlerRunnable = () -> {
-//                        updateDownloadProgress(id);
-//                        if (handlerRunnable != null)
-//                            handler.postDelayed(handlerRunnable, UPDATE_PERIOD);
-//                    };
-//                    handler.post(handlerRunnable);
-//                }
-//            }
+            // If downloading -- show progressBar
+            if (state == DownloadHelper.DownloadingState.Downloading) {
+                long id = LocalStorage.getIdForModInfo(requireContext(), skin);
+                if (id != 0) {
+                    handlerRunnable = () -> {
+                        updateDownloadProgress(id);
+                        if (handlerRunnable != null)
+                            handler.postDelayed(handlerRunnable, UPDATE_PERIOD);
+                    };
+                    handler.post(handlerRunnable);
+                }
+            }
         }
 
         Context context = requireContext();
@@ -220,6 +222,8 @@ public class ModDetailsFragment extends Fragment {
             if (id == 0) {
                 Toast.makeText(context, "Download error. Please try later", Toast.LENGTH_LONG).show();
             } else {
+                showProgressDialog();
+
                 LocalStorage.saveDownloadId(context, skin, id);
                 handlerRunnable = () -> {
                     updateDownloadProgress(id);
@@ -232,6 +236,13 @@ public class ModDetailsFragment extends Fragment {
         } else {
             EasyPermissions.requestPermissions(this, getString(R.string.rationale_write_permission), RC_WRITE_PERMISSIONS, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         }
+    }
+
+    private void setDownloadProgress(int percents) {
+        TextView progress = view.findViewById(R.id.progress);
+       // progress.setText(percents);
+        ProgressBar progressBar = view.findViewById(R.id.progressBar);
+       // progressBar.setProgress(percents);
     }
 
     private void updateDownloadProgress(long downloadId) {
@@ -254,7 +265,8 @@ public class ModDetailsFragment extends Fragment {
                 handler.removeCallbacks(handlerRunnable);
                 handlerRunnable = null;
             }
-            //setDownloadProgress(progress);
+
+            setDownloadProgress(progress);
         }
         cursor.close();
     }
@@ -282,7 +294,8 @@ public class ModDetailsFragment extends Fragment {
 
     private void finishDownloading() {
         updateState(DownloadHelper.DownloadingState.Downloaded);
-        //setDownloadProgress(100);
+        setDownloadProgress(100);
+        //dialogProgress.dismiss();
 
         showDialogSuccessfully();
     }
@@ -297,10 +310,14 @@ public class ModDetailsFragment extends Fragment {
         }
     }
 
+    private void showProgressDialog() {
+        dialogProgress = new ProgressDialog();
+        dialogProgress.show(getChildFragmentManager(), ProgressDialog.class.getSimpleName());
+    }
+
     private void showDialogNotFound() {
         NotFoundDialog dialog = new NotFoundDialog();
         dialog.show(getChildFragmentManager(), NotFoundDialog.class.getSimpleName());
-
     }
 
     public void showDialogDownloadNeverComplete(){
