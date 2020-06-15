@@ -13,7 +13,7 @@ import androidx.fragment.app.DialogFragment;
 
 import com.hi.appskin_v40.R;
 
-public class ProgressDialog extends DialogFragment {
+/*public class ProgressDialog extends DialogFragment {
     View view;
 
     @Override
@@ -35,4 +35,4 @@ public class ProgressDialog extends DialogFragment {
 
         return builder.create();
     }
-}
+}*/

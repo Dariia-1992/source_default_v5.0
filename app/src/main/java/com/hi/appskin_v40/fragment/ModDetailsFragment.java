@@ -34,7 +34,6 @@ import com.hi.appskin_v40.R;
 import com.hi.appskin_v40.dialogs.DownloadNeverCompleteDialog;
 import com.hi.appskin_v40.dialogs.FileDownloadCompleteDialog;
 import com.hi.appskin_v40.dialogs.NotFoundDialog;
-import com.hi.appskin_v40.dialogs.ProgressDialog;
 import com.hi.appskin_v40.model.Skin;
 import com.hi.appskin_v40.model.SkinsRepository;
 import com.hi.appskin_v40.utils.Config;
@@ -46,6 +45,7 @@ import com.squareup.picasso.Picasso;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import android.app.ProgressDialog;
 
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
@@ -222,7 +222,7 @@ public class ModDetailsFragment extends Fragment {
             if (id == 0) {
                 Toast.makeText(context, "Download error. Please try later", Toast.LENGTH_LONG).show();
             } else {
-                showProgressDialog();
+                createProgressDialog();
 
                 LocalStorage.saveDownloadId(context, skin, id);
                 handlerRunnable = () -> {
@@ -310,9 +310,17 @@ public class ModDetailsFragment extends Fragment {
         }
     }
 
-    private void showProgressDialog() {
-        dialogProgress = new ProgressDialog();
-        dialogProgress.show(getChildFragmentManager(), ProgressDialog.class.getSimpleName());
+    private void createProgressDialog() {
+        dialogProgress = new ProgressDialog(getContext());
+        dialogProgress.setMax(100);
+        dialogProgress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        dialogProgress.setContentView(R.layout.dialog_downloading);
+        //dialogProgress.setProgressDrawable(R.drawable.progressbar_downloading);
+        TextView progress = view.findViewById(R.id.progress);
+        //progress.setText("0;;;");
+        ProgressBar progressBar = view.findViewById(R.id.progressBar);
+        //progressBar.setProgress(0);
+        dialogProgress.show();
     }
 
     private void showDialogNotFound() {
