@@ -164,6 +164,8 @@ public class MainFragment extends Fragment{
         View searchButton = view.findViewById(R.id.toolbar_search);
         View toolbarText = view.findViewById(R.id.toolbar_name);
         SearchView searchView = view.findViewById(R.id.search);
+        //EditText searchEditText= searchView.findViewById(androidx.appcompat.R.id.search_src_text);
+        //searchEditText.setTextColor(getResources().getColor(R.color.white));
 
         searchView.setOnCloseListener(() -> {
             setupSearch(false);

@@ -245,7 +245,7 @@ public class ModDetailsFragment extends Fragment {
     private void setDownloadProgress(int percents) {
         TextView progress = dialogProgress.findViewById(R.id.progress);
         ProgressBar progressBar = dialogProgress.findViewById(R.id.progressBar);
-        progress.setText(String.valueOf((percents) + "%"));
+        progress.setText(percents + "%");
         progressBar.setProgress(percents);
     }
 
@@ -299,7 +299,7 @@ public class ModDetailsFragment extends Fragment {
     private void finishDownloading() {
         updateState(DownloadHelper.DownloadingState.Downloaded);
         setDownloadProgress(100);
-        //dialogProgress.dismiss();
+        dialogProgress.dismiss();
         showDialogSuccessfully();
     }
 
@@ -317,7 +317,6 @@ public class ModDetailsFragment extends Fragment {
         dialogProgress = new Dialog(view.getContext());
         dialogProgress.setContentView(R.layout.dialog_downloading);
         dialogProgress.setCancelable(false);
-        //dialogProgress.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogProgress.show();
     }
 
