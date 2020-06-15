@@ -1,6 +1,8 @@
 package com.hi.appskin_v40.fragment;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.DownloadManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -13,6 +15,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AlertDialogLayout;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
@@ -23,6 +26,7 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -62,7 +66,7 @@ public class ModDetailsFragment extends Fragment {
     private Skin skin;
     private Handler handler = new Handler();
     private Runnable handlerRunnable;
-    private ProgressDialog dialogProgress;
+    private Dialog dialogProgress;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -222,7 +226,7 @@ public class ModDetailsFragment extends Fragment {
             if (id == 0) {
                 Toast.makeText(context, "Download error. Please try later", Toast.LENGTH_LONG).show();
             } else {
-                createProgressDialog();
+                createAlertDialog();
 
                 LocalStorage.saveDownloadId(context, skin, id);
                 handlerRunnable = () -> {
@@ -239,10 +243,10 @@ public class ModDetailsFragment extends Fragment {
     }
 
     private void setDownloadProgress(int percents) {
-        TextView progress = view.findViewById(R.id.progress);
-       // progress.setText(percents);
-        ProgressBar progressBar = view.findViewById(R.id.progressBar);
-       // progressBar.setProgress(percents);
+        TextView progress = dialogProgress.findViewById(R.id.progress);
+        ProgressBar progressBar = dialogProgress.findViewById(R.id.progressBar);
+        progress.setText(String.valueOf((percents) + "%"));
+        progressBar.setProgress(percents);
     }
 
     private void updateDownloadProgress(long downloadId) {
@@ -296,7 +300,6 @@ public class ModDetailsFragment extends Fragment {
         updateState(DownloadHelper.DownloadingState.Downloaded);
         setDownloadProgress(100);
         //dialogProgress.dismiss();
-
         showDialogSuccessfully();
     }
 
@@ -310,16 +313,11 @@ public class ModDetailsFragment extends Fragment {
         }
     }
 
-    private void createProgressDialog() {
-        dialogProgress = new ProgressDialog(getContext());
-        dialogProgress.setMax(100);
-        dialogProgress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+    private void createAlertDialog() {
+        dialogProgress = new Dialog(view.getContext());
         dialogProgress.setContentView(R.layout.dialog_downloading);
-        //dialogProgress.setProgressDrawable(R.drawable.progressbar_downloading);
-        TextView progress = view.findViewById(R.id.progress);
-        //progress.setText("0;;;");
-        ProgressBar progressBar = view.findViewById(R.id.progressBar);
-        //progressBar.setProgress(0);
+        dialogProgress.setCancelable(false);
+        //dialogProgress.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogProgress.show();
     }
 
