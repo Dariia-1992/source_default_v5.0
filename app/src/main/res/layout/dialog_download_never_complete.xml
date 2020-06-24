@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:layout_marginStart="12dp">
+    xmlns:tools="http://schemas.android.com/tools">
     <TextView
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="@dimen/margin"
-        android:textSize="20sp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="8dp"
+        android:textSize="24sp"
         android:textAppearance="@style/TextAppearance.FontPath"
         android:textColor="@color/colorPrimaryDark"
         android:text="@string/download_complete" />
@@ -19,11 +19,14 @@
         android:id="@+id/btnOk"
         android:layout_width="80dp"
         android:layout_height="40dp"
-        android:background="@color/btn_ok"
+        android:background="@drawable/box_ok"
+        android:layout_below="@+id/title"
         android:text="@string/ok_button"
-        android:layout_marginTop="12dp"
-        android:layout_marginLeft="@dimen/margin"
-        android:layout_marginBottom="@dimen/margin"
+        android:textAppearance="@style/TextAppearance.FontPath"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="16dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
         android:textColor="@color/white"
         android:textSize="18sp" />
-</LinearLayout>
+</RelativeLayout>

@@ -20,7 +20,7 @@
     <string name="later">LATER</string>
     <string name="never">NEVER</string>
     <string name="rationale_write_permission">We need this permission for download file</string>
-    <string name="minecraft_not_found_title">MINECRAFT NOT FOUND!</string>
+    <string name="minecraft_not_found_title">Minecraft not found!</string>
     <string name="minecraft_not_found_description">You need official minecraft to install mods or addons. Please download and install from Google Play.</string>
     <string name="ok_button">OKAY</string>
     <string name="cancel">CANCEL</string>

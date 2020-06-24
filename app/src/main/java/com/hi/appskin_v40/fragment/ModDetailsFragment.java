@@ -8,10 +8,13 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -190,6 +193,9 @@ public class ModDetailsFragment extends Fragment {
         Intent j = Intent.createChooser(myIntent, "Choose Minecraft to install file:");
         PackageManager pm = requireActivity().getPackageManager();
         List<ResolveInfo> activities;
+        List<ApplicationInfo> appInfo = pm.getInstalledApplications(PackageManager.GET_META_DATA);
+        List<PackageInfo> appInfo2 = pm.getInstalledPackages(PackageManager.GET_META_DATA);
+
         if (android.os.Build.VERSION.SDK_INT >= 23) {
             activities = pm.queryIntentActivities(myIntent, PackageManager.MATCH_ALL);
         } else {

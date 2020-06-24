@@ -1,43 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background_dialog">
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/title"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:textSize="20sp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="8dp"
+        android:textSize="24sp"
         android:textAppearance="@style/TextAppearance.FontPath"
-        android:layout_marginLeft="@dimen/margin"
         android:textColor="@color/colorPrimaryDark"
         android:text="@string/minecraft_not_found_title"/>
     <TextView
         android:id="@+id/description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="@dimen/margin"
-        android:layout_marginRight="@dimen/margin"
+        android:layout_marginRight="16dp"
         android:layout_below="@id/title"
+        android:textSize="18sp"
+        android:textAppearance="@style/TextAppearance.FontPath"
         android:textColor="@color/colorPrimaryDark"
         android:text="@string/minecraft_not_found_description"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:layout_below="@id/description">
         <Button
             android:id="@+id/btnOk"
             android:layout_width="80dp"
             android:layout_height="40dp"
-            android:background="@color/btn_ok"
+            android:background="@drawable/box_ok"
             android:text="@string/ok_button"
             android:layout_marginTop="10dp"
             android:layout_marginRight="16dp"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
+            android:textAppearance="@style/TextAppearance.FontPath"
             android:textColor="@color/white"
             android:textSize="18sp" />
         <TextView
@@ -51,4 +56,4 @@
             android:textAppearance="@style/TextAppearance.FontPath"
             android:layout_centerVertical="true"/>
     </RelativeLayout>
-</LinearLayout>
+</RelativeLayout>
