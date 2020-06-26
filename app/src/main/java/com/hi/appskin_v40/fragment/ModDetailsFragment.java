@@ -191,10 +191,9 @@ public class ModDetailsFragment extends Fragment {
         myIntent.setData(fileUri);
         myIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         Intent j = Intent.createChooser(myIntent, "Choose Minecraft to install file:");
+
         PackageManager pm = requireActivity().getPackageManager();
         List<ResolveInfo> activities;
-        List<ApplicationInfo> appInfo = pm.getInstalledApplications(PackageManager.GET_META_DATA);
-        List<PackageInfo> appInfo2 = pm.getInstalledPackages(PackageManager.GET_META_DATA);
 
         if (android.os.Build.VERSION.SDK_INT >= 23) {
             activities = pm.queryIntentActivities(myIntent, PackageManager.MATCH_ALL);

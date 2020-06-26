@@ -8,6 +8,13 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:mimeType="video/webm" />
+        </intent>
+    </queries>
+
     <application
         android:name="com.hi.appskin_v40.MainApplication"
         android:allowBackup="true"
@@ -39,6 +46,7 @@
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="@string/id_ads_mobile">
         </meta-data>
+
     </application>
 
 </manifest>
