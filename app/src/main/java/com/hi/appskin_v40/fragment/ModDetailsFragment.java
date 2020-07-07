@@ -195,6 +195,9 @@ public class ModDetailsFragment extends Fragment {
         PackageManager pm = requireActivity().getPackageManager();
         List<ResolveInfo> activities;
 
+        //List<ApplicationInfo> appInfo = pm.getInstalledApplications(0);
+        //List<PackageInfo> appInfo2 = pm.getInstalledPackages(PackageManager.GET_META_DATA);
+
         if (android.os.Build.VERSION.SDK_INT >= 23) {
             activities = pm.queryIntentActivities(myIntent, PackageManager.MATCH_ALL);
         } else {
